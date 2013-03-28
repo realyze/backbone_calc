@@ -15,7 +15,7 @@ $(function ($) {
 
     initialize: function () {
       this.$display = this.$('#calcDisplay');
-      this.shouldClearDisplay = true;
+      this.operatorPressed = true;
 
       this.listenTo(this.model, 'change:result', this.render)
       this.render();
@@ -26,16 +26,16 @@ $(function ($) {
     },
 
     onNumberPress: function(e) {
-      if (this.shouldClearDisplay) {
+      if (this.operatorPressed) {
         this.$display.val('');
       }
-      this.shouldClearDisplay = false;
+      this.operatorPressed = false;
       var num = $(e.target).val();
       this.$display.val(this.$display.val() + num);
     },
 
     onOperatorPress: function(e) {
-      if (this.shouldClearDisplay) {
+      if (this.operatorPressed) {
         // Overwrite last operator;
         this.model.pushOp($(e.target).val())
         return;
@@ -44,11 +44,11 @@ $(function ($) {
       this.model.calculate()
       var op = $(e.target).val();
       this.model.pushOp(op);
-      this.shouldClearDisplay = true;
+      this.operatorPressed = true;
     },
 
     onClearPress: function(e) {
-      this.model.clear().set(this.model.defaults);
+      this.model.resetCalc();
     }
 
   });

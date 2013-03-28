@@ -3,6 +3,7 @@ var app = app || {};
 (function () {
   'use strict';
 
+  // Define allowed ops.
   var opDict = {
     '+': function(a, b) {return a+b;},
     '-': function(a, b) {return a-b;},
@@ -10,6 +11,7 @@ var app = app || {};
     '/': function(a, b) {
       if (b === 0) {
         window.alert('Cannot divide by zero!');
+        this.resetCalc();
         return 0
       }
       return a/b;
@@ -20,7 +22,7 @@ var app = app || {};
 
     defaults: {
       result: 0,
-      operand: null,
+      operand: 0,
       operator: null
     },
 
@@ -32,12 +34,18 @@ var app = app || {};
     },
 
     calculate: function() {
-      if ( this.get('operand') === null) {
-        // No operand yet. Just return.
+      if ( this.get('operator') === null) {
+        // No operator yet. Just return.
         return;
       }
 
       var handler = opDict[this.get('operator')];
+      if ( ! _.isFunction(handler)) {
+        window.alert('Unknown operator: ' + this.get('operator'));
+        this.resetCalc();
+        return;
+      }
+      handler = _.bind(handler, this);
       this.set('result', handler(this.get('result'), this.get('operand')));
 
       this.set('operator', null);
@@ -52,6 +60,10 @@ var app = app || {};
         // Remember the operand.
         this.set('operand', num);
       }
+    },
+
+    resetCalc: function() {
+      this.clear().set(this.defaults);
     }
 
   });

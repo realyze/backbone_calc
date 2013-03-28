@@ -7,13 +7,22 @@
 <body>
   <div id="mocha"></div>
   <script src="http://underscorejs.org/underscore.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://backbonejs.org/backbone.js"></script>
   <script src="http://chaijs.com/chai.js"></script>
+  <script src="sinon.js"></script>
   <script src="mocha.js"></script>
-  <script>mocha.setup('bdd')</script>
-  <script src="calc.js"></script>
+  <script>
+    mocha.setup('bdd');
+    var app = app || {};
+  </script>
+  <script src="../models/calc.js"></script>
+  <script src="calc_spec.js"></script>
   <script>
     chai.should();
-    mocha.run();
+    mocha
+      .globals([ 'alert' ])
+      .run();
   </script>
 </body>
 </html>
