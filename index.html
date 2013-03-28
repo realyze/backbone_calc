@@ -1,0 +1,46 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Calculator</title>
+  <LINK href="calc.css" rel="stylesheet" type="text/css">
+
+  <script src="http://underscorejs.org/underscore.js"></script>
+  <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
+  <script src='http://backbonejs.org/backbone.js'></script>
+
+  <script src='models/calc.js'></script>
+  <script src='views/app.js'></script>
+  <script src='calc.js'></script>
+</head>
+<body>
+  <div id='calcApp'>
+    <input type='text' id='calcDisplay' maxlength='10' readonly></input>
+    <div class ='row'>
+      <button class='calcBtn numBtn' value='1'>1</button>
+      <button class='calcBtn numBtn' value='2'>2</button>
+      <button class='calcBtn numBtn' value='3'>3</button>
+    </div>
+    <div class ='row'>
+      <button class='calcBtn numBtn' value='4'>4</button>
+      <button class='calcBtn numBtn' value='5'>5</button>
+      <button class='calcBtn numBtn' value='6'>6</button>
+    </div>
+    <div class ='row'>
+      <button class='calcBtn numBtn' value='7'>7</button>
+      <button class='calcBtn numBtn' value='8'>8</button>
+      <button class='calcBtn numBtn' value='9'>9</button>
+    </div>
+    <div class ='row'>
+      <button class='calcBtn numBtn' value='0'>0</button>
+      <button type='button' class='calcBtn opBtn' value='+'>+</button>
+      <button type='button' class='calcBtn opBtn' value='-'>-</button>
+    </div>
+    <div class = 'row'>
+      <button type='button' class='calcBtn opBtn' value='/'>/</button>
+      <button type='button' class='calcBtn opBtn' value='*'>*</button>
+      <button type='button' class='calcBtn opBtn' value='='>=</button>
+      <button type='button' class='calcBtn clearBtn' value='AC'>AC</button>
+    </div>
+  </div>
+</body>
+</html>

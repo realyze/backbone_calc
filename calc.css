@@ -1,0 +1,13 @@
+#calcApp #calcDisplay {
+  border: 1px black solid;
+  margin-bottom: 10px;
+  width: 160px;
+  height: 30px;
+  text-align: right; 
+  padding: 3px;
+}
+
+#calcApp .calcBtn {
+  width: 50px;
+  height: 30px;
+}
