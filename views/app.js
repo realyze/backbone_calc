@@ -41,7 +41,6 @@ $(function ($) {
         return;
       }
       this.model.pushNumber(parseInt(this.$display.val()));
-      this.model.calculate()
       var op = $(e.target).val();
       this.model.pushOp(op);
       this.operatorPressed = true;

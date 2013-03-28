@@ -117,7 +117,6 @@ describe('calculator', function() {
       calc.pushNumber(2);
       calc.pushOp('*');
       calc.pushNumber(10);
-      calc.calculate();
       calc.pushOp('-');
       calc.pushNumber(5)
     });

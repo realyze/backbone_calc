@@ -27,15 +27,27 @@ var app = app || {};
     },
 
     pushOp: function(op) {
+      this.calculate();
       if (op === '=') {
         return;
       }
       this.set('operator', op);
     },
 
+    pushNumber: function(num) {
+      if ( ! this.get('operator')) {
+        // No operator => seed the result using the operand.
+        this.set('result', num);
+        this.set('operand', null);
+      } else {
+        // Remember the operand.
+        this.set('operand', num);
+      }
+    },
+
     calculate: function() {
-      if ( this.get('operator') === null) {
-        // No operator yet. Just return.
+      if ( this.get('operator') === null || this.get('operand') === null) {
+        // Nothing to do yet. Just return.
         return;
       }
 
@@ -45,21 +57,16 @@ var app = app || {};
         this.resetCalc();
         return;
       }
+      // Bind so that we can access 'this' in the handlers.
       handler = _.bind(handler, this);
       this.set('result', handler(this.get('result'), this.get('operand')));
 
       this.set('operator', null);
       this.set('operand', null);
-    },
-
-    pushNumber: function(num) {
-      if ( ! this.get('operator')) {
-        // No operator => seed the result.
-        this.set('result', num);
-      } else {
-        // Remember the operand.
-        this.set('operand', num);
-      }
+      // Force view update (because result may not change e.g. when
+      // multiplying by 0 but we need to update the display to show the 
+      // result).
+      this.trigger('change:result');
     },
 
     resetCalc: function() {
