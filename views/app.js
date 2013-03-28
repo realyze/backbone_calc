@@ -15,8 +15,7 @@ $(function ($) {
 
     initialize: function () {
       this.$display = this.$('#calcDisplay');
-      this.operatorPressed = true;
-
+      this.operatorPressed = false;
       this.listenTo(this.model, 'change:result', this.render)
       this.render();
     },
@@ -26,7 +25,7 @@ $(function ($) {
     },
 
     onNumberPress: function(e) {
-      if (this.operatorPressed) {
+      if (this.operatorPressed || this.$display.val() === '0') {
         this.$display.val('');
       }
       this.operatorPressed = false;
