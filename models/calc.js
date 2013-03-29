@@ -43,7 +43,6 @@ var app = app || {};
         // No operator => seed the result using the operand.
         this.set('result', num);
       } else {
-        // Remember the operand.
         this.calculate(num);
       }
     },
