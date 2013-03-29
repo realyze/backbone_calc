@@ -4,7 +4,9 @@ var app = app || {};
   'use strict';
 
   var unaryOps = {
-    '=': function(a) {return a;}
+    '=': function(a) {return a;},
+    'sin': function(a) {return Math.sin(a);},
+    'cos': function(a) {return Math.cos(a);}
   }
 
   // Define allowed ops.
