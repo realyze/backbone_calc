@@ -94,7 +94,7 @@ describe('calculator', function() {
 
   });
 
-  describe('when I press operand mulitple time', function() {
+  describe('when I press operator mulitple times', function() {
 
     beforeEach(function() {
       calc.pushNumber(20);
