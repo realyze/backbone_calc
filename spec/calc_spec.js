@@ -16,10 +16,10 @@ describe('calculator', function() {
       calc.pushNumber(20);
       calc.pushOp('+');
       calc.pushNumber(42);
+      calc.pushOp('=');
     });
 
     it('returns the correct sum', function() {
-      calc.calculate()
       calc.get('result').should.equal(62);
     });
   });
@@ -30,10 +30,10 @@ describe('calculator', function() {
       calc.pushNumber(20);
       calc.pushOp('-');
       calc.pushNumber(42);
+      calc.pushOp('=');
     });
 
     it('returns the correct result', function() {
-      calc.calculate()
       calc.get('result').should.equal(-22);
     });
   });
@@ -44,10 +44,10 @@ describe('calculator', function() {
       calc.pushNumber(20);
       calc.pushOp('*');
       calc.pushNumber(42);
+      calc.pushOp('=');
     });
 
     it('returns the correct result', function() {
-      calc.calculate()
       calc.get('result').should.equal(840);
     });
   });
@@ -83,10 +83,10 @@ describe('calculator', function() {
         calc.pushNumber(10);
         calc.pushOp('/');
         calc.pushNumber(3);
+        calc.pushOp('=');
       });
 
       it('returns the correct result', function() {
-        calc.calculate();
         calc.get('result').should.equal(10/3)
       });
 
@@ -103,10 +103,10 @@ describe('calculator', function() {
       calc.pushOp('-');
       calc.pushOp('/');
       calc.pushNumber(2);
+      calc.pushOp('=');
     });
 
     it('applies only the last one', function() {
-      calc.calculate();
       calc.get('result').should.equal(10)
     });
   });
@@ -119,10 +119,10 @@ describe('calculator', function() {
       calc.pushNumber(10);
       calc.pushOp('-');
       calc.pushNumber(5)
+      calc.pushOp('=');
     });
 
     it('applies only the last one', function() {
-      calc.calculate();
       calc.get('result').should.equal(15)
     });
   });
